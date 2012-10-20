@@ -1,4 +1,5 @@
 require 'omniauth-oauth2'
+require 'active_support/core_ext/string'
 
 module OmniAuth
   module Strategies
@@ -6,7 +7,8 @@ module OmniAuth
       
       option :name, "authic"
       option :scope, "email"
-      option :subdomain, ""
+      option :subdomain, "" # Comes in from config
+      option :domain, "authic.com"
 
       uid{ raw_info['id'] }
 
@@ -23,9 +25,11 @@ module OmniAuth
         }
       end
       
-      def initialize(app, options = {}, &block)
-        super(app, {:name=> :authic}.merge(options), &block)
-        options[:client_options][:site] = "http://#{options[:subdomain]}.authicstaging.com"
+      def client
+        raise "You must specify your Authic subdomain in setup i.e. :subdomain => 'mysubdomain'" if options[:subdomain].blank?
+        # Make sure we set the site correctly before creating a client
+        options[:client_options][:site] = "http://#{options[:subdomain]}.#{options[:domain]}"
+        super
       end
       
       def raw_info

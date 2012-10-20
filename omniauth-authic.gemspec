@@ -8,7 +8,7 @@ Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Authic"]
   s.email       = ["support@authic.com"]
-  s.homepage    = "www.authic.com"
+  s.homepage    = "https://github.com/authic/omniauth-authic"
   s.summary     = %q{Omniauth plugin for the Authic service}
   s.description = %q{An Omniauth strategy to integrate your application with Authic}
 
@@ -19,5 +19,7 @@ Gem::Specification.new do |s|
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   s.require_paths = ["lib"]
   
-  s.add_dependency 'omniauth-oauth2', '>= 1.0.2'
+  s.add_runtime_dependency 'omniauth-oauth2', '>= 1.0.2'
+  s.add_development_dependency 'minitest'
+  s.add_development_dependency 'mocha'
 end
