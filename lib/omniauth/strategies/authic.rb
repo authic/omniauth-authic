@@ -9,13 +9,21 @@ module OmniAuth
       option :scope, "email"
       option :subdomain, "" # Comes in from config
       option :domain, "authic.com"
+      option :ssl, true
 
       uid{ raw_info['id'] }
 
       info do
         {
-          :name => raw_info['name'],
-          :email => raw_info['email']
+          :email => raw_info['email'],
+          :first_name => raw_info['first_name'],
+          :last_name => raw_info['last_name'],
+          :full_name => raw_info['full_name'],
+          :mobile => raw_info['last_name'],
+          :phone => raw_info['phone'],
+          :birth_date => raw_info['birth_date'],
+          :groups => raw_info['groups'],
+          :roles => raw_info['roles']
         }
       end
 
@@ -33,8 +41,9 @@ module OmniAuth
       
       def client
         raise "You must specify your Authic subdomain in setup i.e. :subdomain => 'mysubdomain'" if options[:subdomain].blank?
+        scheme = options[:ssl] ? "https" : "http"
         # Make sure we set the site correctly before creating a client
-        options[:client_options][:site] = "https://#{options[:subdomain]}.#{options[:domain]}"
+        options[:client_options][:site] = "#{scheme}://#{options[:subdomain]}.#{options[:domain]}"
         super
       end
       
