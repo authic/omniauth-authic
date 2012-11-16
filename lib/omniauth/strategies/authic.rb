@@ -18,10 +18,15 @@ module OmniAuth
           :email => raw_info['email'],
           :first_name => raw_info['first_name'],
           :last_name => raw_info['last_name'],
+          :middle_name => raw_info['middle_name'],
           :full_name => raw_info['full_name'],
-          :mobile => raw_info['last_name'],
+          :mobile => raw_info['mobile'],
           :phone => raw_info['phone'],
           :birth_date => raw_info['birth_date'],
+          :gender => raw_info['gender'],
+          :timezone => raw_info['timezone'],
+          :country => raw_info['country'],
+          :address => raw_info['address'],
           :groups => raw_info['groups'],
           :roles => raw_info['roles']
         }
