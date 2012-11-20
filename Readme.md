@@ -20,18 +20,17 @@ Run bundle install from the command line:
 Configuration is much the same as any other omniauth strategy. The obvious addition is 'subdomain' which is required by Authic and setup when you subscribe with the service.
 
     Rails.application.config.middleware.use OmniAuth::Builder do
-      provider :authic, AUTHIC_CLIENT_KEY, AUTHIC_CLIENT_SECRET, :subdomain => AUTHIC_CLIENT_SUBDOMAIN 
+      provider :authic, <your authic client key>, <your authic client secret>, :subdomain => <your authic subdomain> 
     end
 
 #### Read about Omniauth Usage
 
 If you haven't already done so, be sure to read about [omniauth](https://github.com/intridea/omniauth). It contains important information about how to setup you app for using omniauth and its strategies.
 
-  
 
-## Example App and Full Authic integration
+## Example App and Authic Engine
 
-Refer to [authic_client](https://github.com/authic/authic_client) for a working example of this omniauth-authic functioning within the Authic rails engine (authic_client is the preferred method of integrating a Rails 3 app with Authic)
+Refer to [authic_client](https://github.com/authic/authic_client) for a working example of omniauth-authic. Authic_client is a Rails engine and the preferred method of integrating a Rails 3 app with Authic.
 
 ## About Authic
 Authic is a secure, brandable cloud authentication service that integrates into your web app in seconds leaving you to concentrate on your core business functionality.
